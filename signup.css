@@ -1,0 +1,124 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+  background-color:#7AD29F;
+  height: 100vh;
+}
+
+.signup-con{
+    width: 350px;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.582) 0px 10px 15px;
+    background-color:#ffffff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 25px 15px;
+   margin: 50px auto;
+   border-radius: 15px;
+}
+
+label{
+margin-bottom: 19px;
+font-size: 20px;
+font-weight: 500;
+  
+}
+
+input{
+    width: 250px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #424141;
+  border-radius: 6px;
+  margin-top: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+button{
+    border: none;
+    width: 120px;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#signupbtn{
+    background-color: #61823B;
+
+}
+
+#loginbtn{
+    background-color:#169D75 ;
+}
+
+@media (max-width:600px) {
+    body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height: 100vh;
+  background-color:#7AD29F;
+}
+
+.signup-con{
+    width: 85%;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color:#ffffff93 ;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 25px 15px;
+  
+   border-radius: 15px;
+}
+
+label{
+margin-bottom: 19px;
+font-size: 20px;
+font-weight: 500;
+  
+}
+
+input{
+    width: 250px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid #424141;
+  border-radius: 6px;
+  margin-top: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+button{
+    border: none;
+    width: 120px;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#signupbtn{
+    background-color: #61823B;
+
+}
+
+#loginbtn{
+    background-color:#169D75 ;
+}
+}

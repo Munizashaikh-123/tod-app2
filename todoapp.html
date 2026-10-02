@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dark-theme{
+            background-color: black;
+            color: white;
+        }
+      
+    </style>
+</head>
+<body>
+
+ 
+    <div class="container light-theme"  >
+        <h1>To Do List</h1>
+        <input type="text" name="" id="todolist" placeholder="Add new task" onkeydown="pressEnter(event)"> <br>
+         <button class="add">Add</button>
+         <button class="delete">Delete</button>
+       
+
+         <ul class="toDo"></ul>
+         </div>
+
+
+
+
+        
+
+<script>
+
+
+var input =document.getElementById("todolist");
+var addList = document.querySelector(".add");
+
+var deleteList = document.querySelector(".delete");
+
+var toDo = document.querySelector(".toDo");
+var update = document.querySelector(".add-1");
+var DelItem = document.querySelector(".delete-1");
+
+addList.addEventListener("click",()=>{
+    var taskBar = input.value.trim();
+    if(taskBar===""){
+        alert("Please write some task");
+        return;
+    }
+   toDo.innerHTML += `<li class="style-li"> 
+        <span class="todoAdd"> ${input.value} </span> <br> 
+        <button onclick="upDate(this)"  class="add-1"> Update </button>
+         <button onclick="del(this)" class="delete-1">  Delete </button> </li>`
+           
+              input.value = "";
+})
+
+
+    deleteList.addEventListener("click",()=>{
+        toDo.innerHTML = ""
+
+    })
+
+    function upDate(btn){
+
+       var oldList = btn.parentElement.querySelector(".todoAdd")
+        var newList = prompt("Update the list",oldList.innerText)
+     
+             oldList.innerText = newList
+       
+
+    }
+
+ 
+
+    function del(btn){
+     var oldList = btn.parentElement.remove()
+ }
+
+
+
+    function pressEnter(e){
+        if(e.key ===  "Enter"){
+         console.log(e.target.value)  
+          var taskBar = input.value.trim();
+    if(taskBar===""){
+        alert("Please write some task");
+        return;
+    }
+   toDo.innerHTML += `<li class="style-li"> 
+        <span class="todoAdd"> ${input.value} </span> <br> 
+        <button onclick="upDate(this)"  class="add-1"> Update </button>
+         <button onclick="del(this)" class="delete-1">  Delete </button> </li>`
+           
+              input.value = ""; 
+           
+        }
+      
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
