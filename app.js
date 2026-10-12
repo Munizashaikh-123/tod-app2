@@ -1,4 +1,5 @@
- 
+ import{auth} from "./firebaseConfig.js";
+ import{db,ref,det,push,update,remove} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
  function addList(btn){
         var inp = document.getElementById("todolist")
         var getUl = btn.nextElementSibling.nextElementSibling
