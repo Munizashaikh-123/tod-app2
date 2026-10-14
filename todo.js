@@ -1,11 +1,11 @@
- import { auth, db } from "./firebaseConfig.js";       
-import { getDatabase, ref, set, push , remove,update,onValue} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";      
+import { auth, db } from "./firebaseConfig.js";
+import { getDatabase, ref, set, push, remove, update, onValue } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
 
 
 
-   
-var input =document.getElementById("todolist");
+
+var input = document.getElementById("todolist");
 var addList = document.querySelector(".add");
 
 var deleteList = document.querySelector(".delete");
@@ -13,121 +13,128 @@ var deleteList = document.querySelector(".delete");
 var toDo = document.querySelector(".toDo");
 
 
-addList.addEventListener("click",()=>{
+addList.addEventListener("click", () => {
     var taskBar = input.value.trim();
-    if(taskBar===""){
+    if (taskBar === "") {
         alert("Please write some task");
         return;
     }
 
-    var taskRef = ref(db,'todoTask');
+    var taskRef = ref(db, 'todoTask');
     var newTaskRef = push(taskRef)
     var taskId = newTaskRef.key;
-    var taskData={
-        id:taskId,
-        task:taskBar
+    var taskData = {
+        id: taskId,
+        task: taskBar
     }
 
-   set(newTaskRef,taskData)
-   .then(() => {
+    set(newTaskRef, taskData)
+        .then(() => {
             console.log("Task saved to database successfully!");
         })
         .catch((error) => {
             console.log("Error saving task:", error.message);
         });
-   
-        toDo.innerHTML += `<li class="style-li" data-id="${taskId}"> 
+
+    toDo.innerHTML += `<li class="style-li" data-id="${taskId}"> 
         <span class="todoAdd" "> ${input.value} </span> <br> 
         <button   class="add-1"> Update </button>
          <button class="delete-1">  Delete </button> </li>`
+    var inputValue = input.value
 
-              input.value = "";
+    input.value = "";
 
-              var readTask = ref(db,'todoTask')
-               onValue(readTask, (snapshot) => {
-               
-              const data = snapshot.val();
-               data += toDo.innerHTML;
-               toDo.innerHTML= `<li class="style-li" data-id="${taskId}"> 
-               <span class="todoAdd" "> ${input.value} </span> <br> 
+    var readTask = ref(db, 'todoTask')
+    onValue(readTask, (snapshot) => {
+
+        var data = snapshot.val();
+        data += toDo.innerHTML;
+        toDo.innerHTML = `<li class="style-li" data-id="${taskId}"> 
+               <span class="todoAdd" "> ${inputValue} </span> <br> 
                <button   class="add-1"> Update </button>
                <button class="delete-1">  Delete </button> </li>`
-            
-            
-            })
 
-              attachEvents()
+
+    })
+
+    attachEvents()
 })
 
 
 
-    deleteList.addEventListener("click",()=>{
+deleteList.addEventListener("click", () => {
 
-        var allTask = ref(db, "todoTask")
-        remove(allTask)
-        toDo.innerHTML = ""
+    var allTask = ref(db, "todoTask")
+    remove(allTask)
+    toDo.innerHTML = ""
 
-    })
-  
+})
 
-    function attachEvents(){
-       var updateBtn = document.querySelectorAll(".add-1")
-       updateBtn.forEach((btn)=>{
-        btn.onclick = function(){
-        var li = this.parentElement
-        var taskId = li.getAttribute("data-id")
-        var updateDb = ref(db,`todoTask/${taskId}`)
-        var oldList = li.querySelector(".todoAdd")
-        var newList = prompt("Update the list",oldList.innerText)
-     
-             oldList.innerText = newList
 
-             update(updateDb , {task:newList})
+function attachEvents() {
+    var updateBtn = document.querySelectorAll(".add-1")
+    updateBtn.forEach((btn) => {
+        btn.onclick = function () {
+            var li = this.parentElement
+            var taskId = li.getAttribute("data-id")
+            var updateDb = ref(db, `todoTask/${taskId}`)
+            var oldList = li.querySelector(".todoAdd")
+            var newList = prompt("Update the list", oldList.innerText)
+
+            oldList.innerText = newList
+
+            update(updateDb, { task: newList })
 
         }
-       })
+    })
 
 
-       var delSingleTask = document.querySelectorAll(".delete-1")
-       delSingleTask.forEach((btn)=>{
-        btn.onclick = function(){
-             var li = this.parentElement
+    var delSingleTask = document.querySelectorAll(".delete-1")
+    delSingleTask.forEach((btn) => {
+        btn.onclick = function () {
+            var li = this.parentElement
             var taskId = li.getAttribute("data-id")
             var delRef = ref(db, `todoTask/${taskId}`)
             remove(delRef)
             li.remove()
-   
+
 
         }
-       })
-    
-
-    }
+    })
 
 
-
-
-  
+}
 
 
 
-    function pressEnter(e){
-        if(e.key ===  "Enter"){
-         console.log(e.target.value)  
-          var taskBar = input.value.trim();
-    if(taskBar===""){
-        alert("Please write some task");
-        return;
-    }
-   toDo.innerHTML += `<li class="style-li"> 
+
+
+input.addEventListener("keydown", pressEnter)
+
+
+function pressEnter(e) {
+    if (e.key === "Enter") {
+        console.log(e.target.value)
+        var taskBar = input.value.trim();
+        if (taskBar === "") {
+            alert("Please write some task");
+            return;
+        }
+        toDo.innerHTML += `<li class="style-li"> 
         <span class="todoAdd"> ${input.value} </span> <br> 
         <button onclick="upDate(this)"  class="add-1"> Update </button>
          <button onclick="del(this)" class="delete-1">  Delete </button> </li>`
-           
-              input.value = ""; 
-           
-        }
-      
+
+        input.value = "";
+
     }
 
+}
 
+window.onload = function (){
+    // write the get function here (Get all the todos from the firebase)
+    // 1. Get all the todos from the firebase
+    // 2. Store them in a variable
+    // 3. Do the innerhtml for all the todos
+    // 4. If there is no todo in the database then you should not have to run the innerhtml
+}
