@@ -1,5 +1,5 @@
 .add{
-    background-color: brown;
+    background-color: darkcyan;
      color: white; 
      cursor: pointer; 
      width: 75px;
@@ -14,7 +14,7 @@
 }
 
 .delete{
-     background-color: darkcyan;
+     background-color: brown;
      color: white; 
      cursor: pointer; 
      width: 65px;
@@ -79,7 +79,7 @@ input{
     padding-left: 10px;
 }
 .add-1{
-     background-color: brown;
+     background-color: darkcyan;
      color: white; 
      cursor: pointer; 
      width: 50px;
@@ -99,7 +99,7 @@ h1{
     text-align: center;
 }
 .delete-1{
-    background-color: darkcyan;
+    background-color: brown;
     color: white; 
      cursor: pointer; 
      width: 50px;
@@ -117,7 +117,7 @@ h1{
 
 @media (max-width:600px) {
     .add{
-    background-color: brown;
+    background-color: darkcyan;
      color: white; 
      cursor: pointer; 
      width: 75px;
@@ -125,14 +125,14 @@ h1{
       font-size: larger;
       border-radius: 5px;
       padding: 5px;
-      margin-left: 100px;
+      margin-left: 90px;
      margin-top: 10px;
      margin-bottom: 10px;
       
 }
 
 .delete{
-     background-color: darkcyan;
+     background-color: brown;
      color: white; 
      cursor: pointer; 
      width: 65px;
@@ -197,12 +197,12 @@ input{
     padding-left: 10px;
 }
 .add-1{
-     background-color: brown;
+     background-color: darkcyan;
      color: white; 
      cursor: pointer; 
      width: 50px;
       border: none;
-      font-size: 13px;
+      font-size: 12px;
       border-radius: 5px;
       padding: 5px;
       margin-left: 10px;
@@ -216,12 +216,12 @@ h1{
     text-align: center;
 }
 .delete-1{
-     background-color: darkcyan;
+     background-color: brown;
      color: white; 
      cursor: pointer; 
      width: 50px;
       border: none;
-      font-size: 13px;
+      font-size: 12px;
       border-radius: 5px;
       padding: 5px;
 

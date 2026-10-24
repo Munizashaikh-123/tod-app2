@@ -1,8 +1,11 @@
 import{auth} from "./firebaseConfig.js";
-  import { getAuth,  signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+  import { getAuth,  signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
-
-
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.replace("./todoapp.html");
+  }
+});
 
 loginBtn.addEventListener("click", function () {
 var email = document.getElementById("email")

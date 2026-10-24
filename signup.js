@@ -1,11 +1,15 @@
 // Import the functions you need from the SDKs you need
 import{auth} from "./firebaseConfig.js";
-  import { getAuth, createUserWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.replace("./todoapp.html");
+  }
+});
 
 var signupBtn = document.getElementById("signupbtn")
 var loginBtn = document.getElementById("loginbtn")
